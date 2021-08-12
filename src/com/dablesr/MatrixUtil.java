@@ -17,6 +17,21 @@ public class MatrixUtil {
         return matrix;
     }
 
+    public static Matrix generateSparse (int width, int height, double percentage) {
+        Matrix matrix = new Matrix(width, height);
+        Random random = new Random();
+
+        for (int r = 0; r < matrix.getNumberOfRows(); r++) {
+            for (int c = 0; c < matrix.getNumberOfColumns(); c++) {
+                if (random.nextDouble() < percentage) {
+                    matrix.setValue(r,c, random.nextDouble());
+                }
+            }
+        }
+
+        return matrix;
+    }
+
     public static void prettyPrint (Matrix matrix) {
         for (int r = 0; r < matrix.getNumberOfRows(); r++) {
             System.out.print("|");
